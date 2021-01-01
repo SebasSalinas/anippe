@@ -18,6 +18,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $portalNamespace = 'App\\Http\\Controllers\\Portal';
 
+    protected $adminNamespace = 'App\\Http\\Controllers\\Admin';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -37,18 +39,24 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware(['web','subDomain'])
+            Route::middleware(['web', 'subDomain'])
                 ->namespace($this->baseNamespace)
                 ->domain('{subdomain}.anippe.test')
                 ->as('base.')
                 ->group(base_path('routes/base.php'));
 
-            Route::middleware(['web','subDomain'])
+            Route::middleware(['web', 'subDomain'])
                 ->namespace($this->portalNamespace)
                 ->domain('{subdomain}.anippe.test')
                 ->as('portal.')
                 ->prefix('portal')
                 ->group(base_path('routes/portal.php'));
+
+            Route::middleware(['web'])
+                ->namespace($this->adminNamespace)
+                ->as('admin.')
+                ->prefix('admin')
+                ->group(base_path('routes/admin.php'));
         });
     }
 

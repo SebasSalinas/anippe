@@ -25,16 +25,21 @@ class TicketsController extends Controller
 
     public function datatable(Project $project)
     {
-        $tickets = $project->tickets();
+        $tickets = $project->tickets()
+            ->with(['project', 'creator', 'department']);
 
         return Datatables::of($tickets)
             ->addColumn('action', function (Ticket $ticket) {
                 return view('base.contacts.actions', $ticket);
             })
+            ->addColumn('has_attachment', function (Ticket $ticket) {
+                $hasAttachment = $ticket->count_media;
+                return $hasAttachment ? '<span><i class="fa fa-paperclip"> ' . $hasAttachment . '</i></span>' : '';
+            })
             ->editColumn('created', function (Ticket $ticket) {
                 return $ticket->created_at;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'has_attachment'])
             ->make(true);
     }
 }

@@ -5,7 +5,6 @@
 @stop
 
 @section('project-content')
-
     <table class="table table-striped" id="tickets-table">
         <thead>
         <tr>
@@ -26,7 +25,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            var ticketsDT = $('#tickets-table').DataTable({
+            $('#tickets-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{route('base.project.tickets.datatable', $project)}}',

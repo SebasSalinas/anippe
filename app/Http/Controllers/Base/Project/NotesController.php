@@ -46,8 +46,8 @@ class NotesController extends Controller
                 return $note->addedBy->fullName;
             })
             ->addColumn('has_attachment', function (Note $note) {
-                $hasAttacment = $note->count_media;
-                return $hasAttacment ? '<span><i class="fa fa-paperclip"> ' . $hasAttacment . '</i></span>' : '';
+                $hasAttachment = $note->count_media;
+                return $hasAttachment ? '<span><i class="fa fa-paperclip"> ' . $hasAttachment . '</i></span>' : '';
             })
             ->editColumn('created', function (Note $note) {
                 return $note->created_at;

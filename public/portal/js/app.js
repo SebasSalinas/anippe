@@ -1085,10 +1085,11 @@ $(function () {
         });
     });
 
+    //Listen for flash message from LiveWire.
     window.addEventListener('flashMessage', event => {
         let message = event.detail.message != null ? event.detail.message : 'Success saved';
         let severity = event.detail.severity != null ? event.detail.severity : 'success';
-console.log(event);
+
         $.toast({
             text: message,
             heading: 'Success',

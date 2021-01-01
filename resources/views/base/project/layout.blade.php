@@ -11,11 +11,14 @@
             <div class="btn-group btn-group-sm ">
                 <button type="button" class="btn btn-primary"><i class="fa fa-tasks"></i> New Task</button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
+                    <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fa fa-map-pin"></i> Pin Project</a></li>
+                    @if(auth()->user()->pinnedProjects->contains($project))
+                        <li><a href="#"><i class="fa fa-map-o"></i> Unpin Project</a></li>
+                    @else
+                        <li><a href="#"><i class="fa fa-map-pin"></i> Pin Project</a></li>
+                    @endif
                     <li><a href="#"><i class="fa fa-clone"></i> Copy Project</a></li>
                     <li><a href="#"><i class="fa fa-user-plus"></i> Assign Members</a></li>
                     <li><a href="{{route('base.projects.edit', $project)}}"><i class="fa fa-edit"></i> Edit</a></li>

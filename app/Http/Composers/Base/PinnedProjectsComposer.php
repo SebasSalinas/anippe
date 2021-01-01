@@ -14,9 +14,16 @@ use Illuminate\View\View;
 
 class PinnedProjectsComposer
 {
+    /**
+     * @param View $view
+     */
     public function compose(View $view)
     {
-        $pinnedProjects = auth()->user()->pinnedProjects()->get(['projects.id','projects.name']);
+        $pinnedProjects = auth()->user()
+            ->pinnedProjects()
+            ->get([
+                'projects.id', 'projects.uuid', 'projects.name'
+            ]);
 
         $view->with('pinnedProjects', $pinnedProjects);
     }

@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'portal',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -76,6 +80,10 @@ return [
         'portal' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Contact::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Admin::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
