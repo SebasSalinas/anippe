@@ -24,6 +24,13 @@ class BaseObserver
             }
         }
 
+        //Check if table has column user_id, and set it.
+        if (Schema::hasColumn($model->getTable(), 'user_id')) {
+            if (auth()->check()) {
+                $model->user_id = auth()->user()->id;
+            }
+        }
+
         //Generate UUID for each table
         if (Schema::hasColumn($model->getTable(), 'uuid')) {
             $uuid = Str::uuid();

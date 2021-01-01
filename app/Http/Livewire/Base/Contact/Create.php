@@ -44,14 +44,17 @@ class Create extends Component
             'email' => $this->email,
             'phone' => $this->phone,
             'organisation_id' => 1,
-            'client_id' => $this->client->id
+            'client_id' => $this->client->id,
         ]);
 
         $this->reset();
         $this->resetErrorBag();
         $this->resetValidation();
 
-        $this->dispatchBrowserEvent('saved', ['modal', 'createContactModal']);
+        $this->dispatchBrowserEvent('formSaved', [
+            'modal', 'editContactModal',
+            'datatable', 'base.contacts.table'
+        ]);
     }
 
     public function render()

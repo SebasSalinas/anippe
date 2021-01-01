@@ -79,12 +79,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('summary', 'SummaryController@index')->name('summary');
 
         //Tickets
+        Route::get('tickets/datatable', 'TicketsController@datatable')->name('tickets.datatable');
         Route::get('tickets', 'TicketsController@index')->name('tickets.index');
 
         //Documents
-        Route::get('documents', 'DocumentsController@index')->name('documents.index');
+        Route::get('files/datatable', 'FilesController@datatable')->name('files.datatable');
+        Route::get('files', 'FilesController@index')->name('files.index');
+
+        //Notes
+        Route::get('notes/datatable', 'NotesController@datatable')->name('notes.datatable');
+        Route::resource('notes', 'NotesController')->only(['index', 'destroy']);
 
         //Tasks
+        Route::get('tasks/datatable', 'TasksController@datatable')->name('tasks.datatable');
         Route::get('tasks', 'TasksController@index')->name('tasks.index');
 
     });

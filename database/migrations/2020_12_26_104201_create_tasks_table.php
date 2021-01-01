@@ -18,7 +18,12 @@ class CreateTasksTable extends Migration
             $table->uuid('uuid');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->morphs('related');
             $table->morphs('creator');
+            $table->unsignedInteger('status_id');
+            $table->unsignedInteger('priority_id');
+            $table->unsignedInteger('start_at')->nullable();
+            $table->unsignedInteger('deadline_at')->nullable();
             $table->unsignedInteger('organisation_id');
             $table->softDeletes();
             $table->timestamps();

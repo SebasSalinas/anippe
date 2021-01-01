@@ -24,6 +24,10 @@ class TaskFactory extends Factory
     {
         return [
             'uuid' => $this->faker->uuid,
+            'related_id' => 1,
+            'related_type' => 'project',
+            'status_id' =>1,
+            'priority_id' => 1,
             'name' => $this->faker->text(30),
             'description' => $this->faker->text(300),
             'organisation_id' => 1,

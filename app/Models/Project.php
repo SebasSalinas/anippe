@@ -38,6 +38,21 @@ class Project extends BaseOrganisationModel
         return $this->belongsToMany(User::class, 'link_project_users', 'project_id', 'user_id')->withTimestamps();
     }
 
+    public function notes()
+    {
+        return $this->morphMany(Note::class, 'related')->latest();
+    }
+
+    public function tasks()
+    {
+        return $this->morphMany(Task::class, 'related')->latest();
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'project_id')->latest();
+    }
+
     /*
      * Accessors
      */

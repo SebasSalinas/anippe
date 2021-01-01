@@ -62,6 +62,7 @@
                         <th>Name</th>
                         <th>Start Date</th>
                         <th>Deadline Date</th>
+                        <th>Client</th>
                         <th>Members</th>
                         <th>Date Created</th>
                         <th></th>
@@ -86,6 +87,7 @@
                     {data: 'name', name: 'name'},
                     {data: 'starting_at', name: 'starting_at'},
                     {data: 'deadline_at', name: 'deadline_at'},
+                    {data: 'client', name: 'client'},
                     {data: 'members', name: 'members'},
                     {data: 'created', name: 'created'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '100px'}

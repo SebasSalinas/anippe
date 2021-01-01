@@ -58,9 +58,11 @@ class Table extends TableComponent
                 }),
             Column::make('Actions')
                 ->format(function (Contact $model) {
-                    return view('backend.auth.user.includes.actions', ['user' => $model]);
+                    return view('livewire.base.contact.actions', [
+                        'model' => $model
+                    ]);
                 })
-                ->hideIf(auth()->user()->cannot('do-this')),
+            ,
         ];
     }
 }

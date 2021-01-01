@@ -15,14 +15,21 @@
             </div>
         </div>
         <div class="box-body">
-            <livewire:base.contact.table />
+            <table class="table table-striped" id="contacts-table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 
-
+    <livewire:base.contact.edit/>
+    <livewire:base.contact.create :client="$client"/>
 
 @stop
-
 
 @push('scripts')
     <script>
@@ -32,29 +39,22 @@
                 serverSide: true,
                 ajax: '{{route('base.client.contacts.datatable', $client)}}',
                 columns: [
-                    {data: 'position', name: 'position'},
-                    {data: 'fullName', name: 'fullName'},
-                    {data: 'email', name: 'email'},
-                    {data: 'phone', name: 'phone'},
                     {data: 'created', name: 'created'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
                 ]
             });
 
-            window.addEventListener('saved', event => {
-                $("#createContactModal").modal('hide');
+            window.addEventListener('formSaved', event => {
                 contactsDT.draw();
+                $('.modal').modal('hide');
+                $('.modal').on('hidden.bs.modal', function () {
+                    $(this).find('form')[0].reset();
+                    $(this).find('.help-block').hide();
+                });
             })
 
-            //Reset bootstrap modal if values and errors messages exists, but cancal modal is executed.
-            $('.modal').on('hidden.bs.modal', function () {
-                $(this).find('form')[0].reset();
-                $(this).find('.help-block').hide();
-            });
+
         });
     </script>
-
-    <script>
-
-    </script>
 @endpush
+

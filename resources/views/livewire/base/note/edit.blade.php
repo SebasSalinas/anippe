@@ -1,15 +1,15 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="editContactModal">
+    <div wire:ignore.self class="modal fade" id="editNoteModal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form wire:submit.prevent="updateContact">
+                <form wire:submit.prevent="update">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="fa fa-user-plus"></i> Edit Contact</h4>
+                        <h4 class="modal-title"><i class="fa fa-sticky-note"></i> Edit Note</h4>
                     </div>
                     <div class="modal-body">
-                        @include('livewire.base.contact.form')
+                        @include('livewire.base.note.form')
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">

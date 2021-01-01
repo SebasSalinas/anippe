@@ -38,7 +38,7 @@
                 ajax: '{{route('base.client.notes.datatable', $client)}}',
                 columns: [
                     {data: 'created', name: 'created'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
+                    {data: 'action', name: 'action', orderable: false, searchable: false, width: '100px'}
                 ]
             });
         });

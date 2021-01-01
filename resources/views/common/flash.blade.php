@@ -17,7 +17,7 @@
                     loaderBg: '#00a65a',  // Background color of the toast loader
                 });
             </script>
-            @elseif(flash()->class  == 'error')
+        @elseif(flash()->class  == 'error')
             <script>
                 $.toast({
                     text: "{{flash()->message}}",
@@ -49,6 +49,6 @@
                     loaderBg: '#e29720',  // Background color of the toast loader
                 });
             </script>
-            @endif
+        @endif
     @endpush
 @endif
