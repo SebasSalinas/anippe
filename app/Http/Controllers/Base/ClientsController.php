@@ -28,7 +28,7 @@ class ClientsController extends Controller
                 return $client->linkedGroups;
             })
             ->addColumn('action', function (Client $client) {
-                return view('base.clients.actions', ['client'=>$client]);
+                return view('livewire.base.client.actions', ['client'=>$client]);
             })
             ->editColumn('created', function (Client $client) {
                 return $client->created_at;
