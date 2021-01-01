@@ -7,6 +7,7 @@ use App\Scopes\OrganisationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class Organisation extends Model
@@ -36,5 +37,27 @@ class Organisation extends Model
     public function users()
     {
         return $this->hasMany(User::class, 'organisation_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    /*
+     * Accessors
+     */
+    public function getFullAddressAttribute()
+    {
+        $country = $this->country == null ? '' : $this->country->name;
+
+        return implode(", ", array_filter([$this->street, $this->place, $this->postal_code, $country]));
+    }
+
+    public function getCreatedAtAttribute($timestamp)
+    {
+        if ($timestamp == null) return;
+
+        return Carbon::parse($timestamp)->format('d.m.Y H:m');
     }
 }

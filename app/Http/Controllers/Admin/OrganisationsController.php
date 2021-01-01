@@ -15,14 +15,17 @@ class OrganisationsController extends Controller
 
     public function datatable()
     {
-        $organisations = Organisation::query();
+        $organisations = Organisation::with('country');
 
         return Datatables::of($organisations)
             ->editColumn('name', function (Organisation $organisation) {
                 return '<a href="' . $organisation->link() . '" class="text-bold text-info">' . $organisation->name . '</a>';
             })
+            ->addColumn('fullAddress', function (Organisation $organisation) {
+                return $organisation->fullAddress;
+            })
             ->addColumn('action', function (Organisation $organisation) {
-                //return view('base.clients.actions', ['organisation' => $organisation]);
+                return view('livewire.admin.organisation.actions', ['organisation' => $organisation]);
             })
             ->rawColumns(['action', 'name'])
             ->make(true);

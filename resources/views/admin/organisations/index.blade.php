@@ -33,6 +33,9 @@
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Subdomain</th>
+                        <th>Address</th>
+                        <th>Date Created</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -53,6 +56,9 @@
                 ajax: '{{route('admin.organisations.datatable')}}',
                 columns: [
                     {data: 'name', name: 'name'},
+                    {data: 'subdomain', name: 'subdomain'},
+                    {data: 'fullAddress', name: 'fullAddress'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '100px'}
                 ]
             });

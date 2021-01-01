@@ -55,10 +55,11 @@
                         <option value="{{$country->id}}">{{$country->name}}</option>
                     @endforeach
                 </select>
+                @error('countryId')
+                <p class="help-block text-red text-bold">{{$message}}</p>
+                @enderror
             </div>
-            @error('countryId')
-            <p class="help-block text-red text-bold">{{$message}}</p>
-            @enderror
+
         </div>
     </div>
 </div>
