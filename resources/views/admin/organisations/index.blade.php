@@ -45,6 +45,7 @@
     </section>
 
     <livewire:admin.organisation.create/>
+    <livewire:admin.organisation.edit/>
 @stop
 
 @push('scripts')
