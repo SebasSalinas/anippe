@@ -25,7 +25,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Browse Organisations</h3>
                 <div class="box-tools pull-right">
-                    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#clientFormModal"><i class="fa fa-plus"></i> Add Organisation</a>
+                    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createOrganisationModal"><i class="fa fa-plus"></i> Add Organisation</a>
                 </div>
             </div>
             <div class="box-body">
@@ -40,6 +40,8 @@
             </div>
         </div>
     </section>
+
+    <livewire:admin.organisation.create/>
 @stop
 
 @push('scripts')
