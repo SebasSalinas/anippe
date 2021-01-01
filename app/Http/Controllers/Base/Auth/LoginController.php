@@ -23,6 +23,15 @@ class LoginController extends Controller
         return view('base.auth.login');
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        $user->update([
+            'last_login_at' => now(),
+        ]);
+
+        session()->put('organisation_id', $user->organisation->id);
+    }
+
     protected function guard()
     {
         return Auth::guard('web');

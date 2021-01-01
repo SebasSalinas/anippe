@@ -18,6 +18,8 @@ class Authenticate extends Middleware
             return route('portal.login', $request->subdomain);
         } elseif ($request->routeIs('base.*')) {
             return route('base.login', $request->subdomain);
+        } elseif ($request->routeIs('admin.*')) {
+            return route('admin.login', $request->subdomain);
         } else {
             return redirect()->to('/');
         }
