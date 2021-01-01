@@ -39,7 +39,7 @@
                     {data: 'status', name: 'status'},
                     {data: 'assigned_to', name: 'assigned_to'},
                     {data: 'priority', name: 'priority'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
+                    {data: 'action', name: 'action', orderable: false, searchable: false, width: '150px'}
                 ]
             });
         });

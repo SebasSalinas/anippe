@@ -15,6 +15,7 @@ class User extends BaseOrganisationModel implements AuthenticatableContract, Aut
 {
     use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail, Notifiable;
 
+    protected $appends = ['fullName'];
     /*
      * Acessors
      */

@@ -33,6 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('projects/datatable', 'ProjectsController@datatable')->name('projects.datatable');
     Route::resource('projects', 'ProjectsController')->except(['show']);
 
+    //Tasks
+    Route::resource('tasks', 'TasksController')->only(['destroy','show']);
+
     //Tickets
     Route::get('tickets/datatable', 'TicketsController@datatable')->name('tickets.datatable');
     Route::resource('tickets', 'TicketsController');

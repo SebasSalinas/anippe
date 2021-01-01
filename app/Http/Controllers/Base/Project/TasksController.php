@@ -24,20 +24,21 @@ class TasksController extends Controller
 
     public function datatable(Project $project)
     {
-        $tasks = $project->tasks();
+        $tasks = $project->tasks()->with('users');
 
         return Datatables::of($tasks)
             ->addColumn('action', function (Task $task) {
-
+                return view('livewire.base.task.actions', ['task' => $task]);
             })
             ->addColumn('has_attachment', function (Task $task) {
-
+                $hasAttachment = $task->count_media;
+                return $hasAttachment ? '<span><i class="fa fa-paperclip"> ' . $hasAttachment . '</i></span>' : '';
             })
             ->addColumn('start_date', function (Task $task) {
-
+                return $task->start_at;
             })
             ->addColumn('due_date', function (Task $task) {
-
+                return $task->deadline_at;
             })
             ->addColumn('status', function (Task $task) {
 
@@ -46,12 +47,16 @@ class TasksController extends Controller
 
             })
             ->addColumn('assigned_to', function (Task $task) {
+                return $task->members;
+            })
+            ->editCOlumn('name', function (Task $task) {
+                return '<a href="' . $task->link() . '" class="text-bold text-info">' . $task->name . '</a>';
 
             })
             ->editColumn('created', function (Task $task) {
                 return $task->created_at;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'has_attachment','name'])
             ->make(true);
     }
 }

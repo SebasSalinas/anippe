@@ -25,7 +25,7 @@ mix.scripts([
     ], 'public/base/css/app.css')
     .sourceMaps();
 
-/* ADMIn */
+/* ADMIN */
 mix.scripts([
     'resources/adminLTE/bower_components/jquery/dist/jquery.min.js',
     'resources/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js',

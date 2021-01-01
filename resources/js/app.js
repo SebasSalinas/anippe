@@ -1,4 +1,5 @@
 $(function () {
+
     //Make iCheck
     $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',

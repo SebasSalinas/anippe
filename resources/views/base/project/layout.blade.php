@@ -9,7 +9,9 @@
         </h1>
         <ol class="breadcrumb">
             <div class="btn-group btn-group-sm ">
-                <button type="button" class="btn btn-primary"><i class="fa fa-tasks"></i> New Task</button>
+                <button type="button" data-toggle="modal" data-target="#createTaskModal" class="btn btn-primary">
+                    <i class="fa fa-tasks"></i> New Task
+                </button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -28,6 +30,9 @@
             </div>
         </ol>
     </section>
+
+    <livewire:base.task.create :related="$project"/>
+    <livewire:base.task.view/>
 
     <section class="content">
 

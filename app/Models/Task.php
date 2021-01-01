@@ -3,9 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class Task extends BaseOrganisationModel
 {
+    protected $attributes = [
+        'status_id' => 1,
+        'priority_id' => 1,
+    ];
+
+    /*
+     * Methods
+     */
+    public function link()
+    {
+        return URL::route('base.tasks.show', ['task' => $this], ['class' => 'text-bold text-primary']);
+    }
+
     /*
      * Relations
      */
@@ -35,4 +49,6 @@ class Task extends BaseOrganisationModel
     {
         return $this->users->pluck('first_name')->implode(', ');
     }
+
+
 }
