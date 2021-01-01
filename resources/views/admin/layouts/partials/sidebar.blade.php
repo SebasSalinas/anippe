@@ -24,6 +24,11 @@
                 <a href="{{route('admin.dashboard')}}"> <i class="fa fa-th"></i> <span>Dashboard</span> </a>
             </li>
 
+            <li class="{{active('admin.organisations.*')}}">
+                <a href="{{route('admin.organisations.index')}}"> <i class="fa fa-building"></i>
+                    <span>Organisations</span> </a>
+            </li>
+
         </ul>
     </section>
 </aside>
