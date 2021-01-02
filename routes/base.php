@@ -122,6 +122,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('roles', 'RolesController')->only(['index', 'destroy']);
 
         //Client Groups
+        Route::get('client-groups/datatable', 'ClientGroupsController@datatable')->name('client-groups.datatable');
         Route::resource('client-groups', 'ClientGroupsController')->only(['index', 'destroy']);
 
     });
