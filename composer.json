@@ -20,6 +20,7 @@
         "rappasoft/laravel-livewire-tables": "^0.3.3",
         "spatie/laravel-flash": "^1.8",
         "spatie/laravel-medialibrary": "^9.0.0",
+        "spatie/laravel-permission": "^3.18",
         "watson/active": "^6.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

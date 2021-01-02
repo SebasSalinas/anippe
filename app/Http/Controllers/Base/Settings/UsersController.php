@@ -16,4 +16,9 @@ class UsersController
     {
         return view('base.settings.users.index');
     }
+
+    public function datatable()
+    {
+
+    }
 }

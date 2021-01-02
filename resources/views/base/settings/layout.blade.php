@@ -29,17 +29,6 @@
                                 <a href="{{route('base.settings.company')}}"><i class="fa fa-building"></i> Company </a>
                             </li>
 
-                            <li class="{{active('base.settings.users.*')}}">
-                                <a href="{{route('base.settings.users.index')}}"><i class="fa fa-users"></i> Users </a>
-                            </li>
-
-                            <li class="{{active('base.settings.roles.*')}}">
-                                <a href="{{route('base.settings.roles.index')}}"><i class="fa fa-lock"></i> Roles </a>
-                            </li>
-
-                            <li class="{{active('base.settings.email-templates.*')}}">
-                                <a href="{{route('base.settings.email-templates.index')}}"><i class="fa fa-mail-reply"></i> Email Templates </a>
-                            </li>
 
                         </ul>
                     </div>

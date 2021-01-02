@@ -46,11 +46,17 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span> </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
+
+                    <li class="{{active('base.settings.users.*')}}">
+                        <a href="{{route('base.settings.users.index')}}"><i class="fa fa-users"></i> Users</a>
+                    </li>
+
                     <li class="treeview">
+
                         <a href="#"><i class="fa fa-circle-o"></i> Clients <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span> </a>
+                            <i class="fa fa-angle-left pull-right"></i> </span>
+                        </a>
+
                         <ul class="treeview-menu">
                             <li class="{{active('base.settings.client-groups.*')}}">
                                 <a href="{{route('base.settings.client-groups.index')}}"><i class="fa fa-user-plus"></i> Groups</a>
