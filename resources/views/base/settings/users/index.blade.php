@@ -25,14 +25,11 @@
                 <h3 class="box-title">Browse Users</h3>
             </div>
             <div class="box-body">
-                <table class="table table-striped" id="contacts-table">
+                <table class="table table-striped" id="users-table">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Client</th>
-                        <th>Position</th>
+                        <th>Full Name</th>
                         <th>Email</th>
-                        <th>Phone</th>
                         <th>Date Created</th>
                         <th></th>
                     </tr>
@@ -48,17 +45,14 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $('#contacts-table').DataTable({
+            $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{route('base.settings.users.datatable')}}',
                 columns: [
-                    {data: 'client', name: 'client'},
                     {data: 'fullName', name: 'fullName'},
-                    {data: 'position', name: 'position'},
                     {data: 'email', name: 'email'},
-                    {data: 'phone', name: 'phone'},
-                    {data: 'created', name: 'created'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
                 ]
             });

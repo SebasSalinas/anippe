@@ -108,6 +108,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('company', 'CompanyController@update')->name('company');
 
         //Users
+        Route::get('users/datatable', 'UsersController@datatable')->name('users.datatable');
         Route::resource('users', 'UsersController');
 
         //Roles
