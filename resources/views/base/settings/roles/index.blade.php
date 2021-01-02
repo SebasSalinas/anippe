@@ -25,15 +25,10 @@
                 <h3 class="box-title">Browse Roles</h3>
             </div>
             <div class="box-body">
-                <table class="table table-striped" id="contacts-table">
+                <table class="table table-striped" id="roles-table">
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Client</th>
-                        <th>Position</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Date Created</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -48,17 +43,12 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $('#contacts-table').DataTable({
+            $('#roles-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{route('base.contacts.datatable')}}',
+                ajax: '{{route('base.settings.roles.datatable')}}',
                 columns: [
-                    {data: 'client', name: 'client'},
-                    {data: 'fullName', name: 'fullName'},
-                    {data: 'position', name: 'position'},
-                    {data: 'email', name: 'email'},
-                    {data: 'phone', name: 'phone'},
-                    {data: 'created', name: 'created'},
+                    {data: 'name', name: 'name'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
                 ]
             });

@@ -111,6 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('users', 'UsersController');
 
         //Roles
+        Route::get('roles/datatable', 'RolesController@datatable')->name('roles.datatable');
         Route::resource('roles', 'RolesController');
 
         //Email Templates
