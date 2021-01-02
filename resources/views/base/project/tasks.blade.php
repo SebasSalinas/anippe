@@ -32,7 +32,7 @@
                 ajax: '{{route('base.project.tasks.datatable', $project)}}',
                 columns: [
                     {data: 'has_attachment', name: 'has_attachment', searchable: false, width: '50px'},
-                    {data: 'created', name: 'created'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'name', name: 'name'},
                     {data: 'start_date', name: 'start_date'},
                     {data: 'due_date', name: 'due_date'},

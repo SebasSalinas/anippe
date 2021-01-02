@@ -18,7 +18,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleInputEmail1">Start At</label>
-            <input type="date" class="form-control datetimepicker" wire:model.defer="startDate" placeholder="Start Date">
+            <input type="date" class="form-control " wire:model.defer="startDate" placeholder="Start Date">
             @error('startDate')
             <p class="help-block text-red text-bold">{{$message}}</p>
             @enderror
@@ -27,7 +27,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleInputEmail1">Start At</label>
-            <input type="date" class="form-control datetimepicker" wire:model.defer="deadlineDate" placeholder="Deadline Date">
+            <input type="date" class="form-control " wire:model.defer="deadlineDate" placeholder="Deadline Date">
             @error('deadlineDate')
             <p class="help-block text-red text-bold">{{$message}}</p>
             @enderror
@@ -47,5 +47,4 @@
         <p class="help-block text-red text-bold">{{$message}}</p>
         @enderror
     </div>
-
 </div>

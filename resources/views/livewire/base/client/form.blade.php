@@ -55,7 +55,6 @@
                 <p class="help-block text-red text-bold">{{$message}}</p>
                 @enderror
             </div>
-
         </div>
     </div>
 </div>

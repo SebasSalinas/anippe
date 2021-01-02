@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Enums\Priority;
+use App\Enums\TaskStatus;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class Task extends BaseOrganisationModel
 {
     protected $attributes = [
-        'status_id' => 1,
-        'priority_id' => 1,
+        'status_id' => TaskStatus::NotStarted,
+        'priority_id' => Priority::Low,
     ];
 
     /*
@@ -18,6 +20,11 @@ class Task extends BaseOrganisationModel
     public function link()
     {
         return URL::route('base.tasks.show', ['task' => $this], ['class' => 'text-bold text-primary']);
+    }
+
+    public function relatedLink()
+    {
+
     }
 
     /*
@@ -31,18 +38,18 @@ class Task extends BaseOrganisationModel
     /*
      * Accessors
      */
-    public function getStartingAtAttribute($timestamp)
+    public function getStartAtAttribute($timestamp)
     {
         if ($timestamp == null) return;
 
-        return Carbon::parse($timestamp)->format('d.m.Y H:m');
+        return Carbon::parse($timestamp)->format('d.m.Y');
     }
 
     public function getDeadlineAtAttribute($timestamp)
     {
         if ($timestamp == null) return;
 
-        return Carbon::parse($timestamp)->format('d.m.Y H:m');
+        return Carbon::parse($timestamp)->format('d.m.Y');
     }
 
     public function getMembersAttribute()

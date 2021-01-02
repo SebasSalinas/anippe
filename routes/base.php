@@ -10,7 +10,6 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-
 //Logged in routes
 Route::group(['middleware' => 'auth'], function () {
 
@@ -34,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('projects', 'ProjectsController')->except(['show']);
 
     //Tasks
-    Route::resource('tasks', 'TasksController')->only(['destroy','show']);
+    Route::resource('tasks', 'TasksController')->only(['destroy', 'show']);
 
     //Tickets
     Route::get('tickets/datatable', 'TicketsController@datatable')->name('tickets.datatable');
@@ -116,6 +115,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Email Templates
         Route::resource('email-templates', 'EmailTemplatesController');
+
+        //Roles
+        Route::resource('roles', 'RolesController')->only(['index', 'destroy']);
+
+        //Client Groups
+        Route::resource('client-groups', 'ClientGroupsController')->only(['index', 'destroy']);
 
     });
 

@@ -10,6 +10,8 @@
 namespace App\Http\Controllers\Base\Project;
 
 
+use App\Enums\Priority;
+use App\Enums\TaskStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Task;
@@ -41,10 +43,10 @@ class TasksController extends Controller
                 return $task->deadline_at;
             })
             ->addColumn('status', function (Task $task) {
-
+                return TaskStatus::getDescription($task->status_id);
             })
             ->addColumn('priority', function (Task $task) {
-
+                return Priority::getDescription($task->priority_id);
             })
             ->addColumn('assigned_to', function (Task $task) {
                 return $task->members;
@@ -53,10 +55,10 @@ class TasksController extends Controller
                 return '<a href="' . $task->link() . '" class="text-bold text-info">' . $task->name . '</a>';
 
             })
-            ->editColumn('created', function (Task $task) {
+            ->editColumn('created_at', function (Task $task) {
                 return $task->created_at;
             })
-            ->rawColumns(['action', 'has_attachment','name'])
+            ->rawColumns(['action', 'has_attachment', 'name'])
             ->make(true);
     }
 }

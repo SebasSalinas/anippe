@@ -11,10 +11,11 @@ class View extends Component
 
     protected $listeners = ['viewTask'];
 
-public function mount()
-{
-    $this->task = new Task();
-}
+    public function mount()
+    {
+        $this->task = new Task();
+    }
+
     public function viewTask($task)
     {
         $this->task = Task::find($task['id']);

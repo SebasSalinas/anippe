@@ -40,8 +40,33 @@
                 <a href="{{route('base.tickets.index')}}"> <i class="fa fa-ticket"></i> <span>Tickets</span> </a>
             </li>
 
-            <li class="{{active(['base.settings.*'])}}">
-                <a href="{{route('base.settings.general')}}"> <i class="fa fa-cogs"></i> <span>Settings</span> </a>
+
+            <li class="treeview">
+                <a href="#"> <i class="fa fa-cogs"></i> <span>Settings</span> <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span> </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i> Clients <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span> </a>
+                        <ul class="treeview-menu">
+                            <li class="{{active('base.settings.client-groups.*')}}">
+                                <a href="{{route('base.settings.client-groups.index')}}"><i class="fa fa-user-plus"></i> Groups</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="{{active('base.settings.roles.*')}}">
+                        <a href="{{route('base.settings.roles.index')}}"><i class="fa fa-user-secret"></i> Roles</a>
+                    </li>
+
+                    <li class="{{active('base.settings.general')}}">
+                        <a href="{{route('base.settings.general')}}"><i class="fa fa-gear"></i> Settings</a>
+                    </li>
+
+                </ul>
             </li>
 
             {{--Pinned projects--}}
