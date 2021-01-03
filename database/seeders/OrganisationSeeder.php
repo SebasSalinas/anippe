@@ -17,11 +17,11 @@ class OrganisationSeeder extends Seeder
     {
         Organisation::create([
             'uuid' => Str::uuid(),
-            'subdomain' => 'rinels',
-            'name' => 'Rinels d.o.o.',
+            'subdomain' => 'test',
+            'name' => 'Test',
             'country_id' => 1,
-            'street' => 'Grabovac 4',
-            'place' => 'Rijeka',
+            'street' => 'Test',
+            'place' => 'Test',
             'user_id' => 1
         ]);
     }
