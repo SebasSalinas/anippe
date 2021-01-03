@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Base\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClientGroup;
+use App\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
 
 class ClientGroupsController extends Controller
@@ -15,16 +16,17 @@ class ClientGroupsController extends Controller
 
     public function datatable()
     {
-        $clientGroups = ClientGroup::all();
+        $clientGroups = ClientGroup::query();
 
         return Datatables::of($clientGroups)
-            ->editColumn('name', function (ClientGroup $clientGroup) {
-                return $clientGroup->name;
+            ->editColumn('color', function (ClientGroup $clientGroup) {
+                return '
+                    <span><i style="color:'.$clientGroup->color. ';" class="fa fa-circle"></i></span>';
             })
             ->addColumn('action', function (ClientGroup $clientGroup) {
                 return view('base.settings.roles.actions', ['role' => $clientGroup]);
             })
-            ->rawColumns(['action', 'name'])
+            ->rawColumns(['action', 'name','color'])
             ->make(true);
     }
 }

@@ -28,4 +28,8 @@ Route::group(['middleware' => 'auth:portal'], function () {
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile/edit', 'ProfileController@update')->name('profile.edit');
 
+    //Tickets
+    Route::get('datatable', 'TicketsController@datatable')->name('tickets.datatable');
+    Route::resource('tickets', 'TicketsController');
+
 });

@@ -22,12 +22,9 @@ class UsersController
 
     public function datatable()
     {
-        $users = User::all();
+        $users = User::query();
 
         return Datatables::of($users)
-            ->editColumn('name', function (User $user) {
-                return $user->fullName;
-            })
             ->addColumn('action', function (User $user) {
                 return view('base.settings.roles.actions', ['role' => $user]);
             })

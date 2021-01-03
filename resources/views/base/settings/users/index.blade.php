@@ -28,7 +28,8 @@
                 <table class="table table-striped" id="users-table">
                     <thead>
                     <tr>
-                        <th>Full Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
                         <th>Date Created</th>
                         <th></th>
@@ -50,7 +51,8 @@
                 serverSide: true,
                 ajax: '{{route('base.settings.users.datatable')}}',
                 columns: [
-                    {data: 'fullName', name: 'fullName'},
+                    {data: 'first_name', name: 'first_name'},
+                    {data: 'last_name', name: 'last_name'},
                     {data: 'email', name: 'email'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}

@@ -10,4 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function flashSaveSuccess()
+    {
+        flash()->success('Saved successfully');
+    }
+
+    protected function flashDeleteSuccess()
+    {
+        flash()->success('Delete successfully');
+    }
 }

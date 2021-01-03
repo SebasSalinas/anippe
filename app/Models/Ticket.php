@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\TicketStatus;
 use Illuminate\Support\Facades\URL;
 
 class Ticket extends BaseOrganisationModel
 {
+    protected $attributes = [
+        'status_id' => TicketStatus::Open
+    ];
+
     /*
      * Methods
      */
@@ -42,6 +45,11 @@ class Ticket extends BaseOrganisationModel
     public function replies()
     {
         return $this->hasMany(TicketReply::class)->latest();
+    }
+
+    public function assigned()
+    {
+        return $this->belongsTo(User::class, 'assigned_user_id');
     }
 
 

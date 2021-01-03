@@ -19,9 +19,16 @@ class Contact extends BaseOrganisationModel implements AuthenticatableContract, 
         return $this->first_name . ' ' . $this->last_name;
     }
 
+    /*
+     * Relations
+     */
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
+    public function tickets()
+    {
+        return $this->morphMany(Ticket::class, 'creator')->latest();
+    }
 }

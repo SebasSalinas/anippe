@@ -37,5 +37,6 @@
 </div>
 
 <script src="{{asset('portal/js/app.js')}}"></script>
+@stack('scripts')
 </body>
 </html>

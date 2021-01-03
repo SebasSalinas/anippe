@@ -28,7 +28,9 @@
                 <table class="table table-striped" id="client-groups-table">
                     <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
+                        <th>Description</th>
                         <th>Created At</th>
                         <th></th>
                     </tr>
@@ -49,7 +51,9 @@
                 serverSide: true,
                 ajax: '{{route('base.settings.client-groups.datatable')}}',
                 columns: [
+                    {data: 'color', name: 'color'},
                     {data: 'name', name: 'name'},
+                    {data: 'description', name: 'description'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, width: '50px'}
                 ]

@@ -17,12 +17,9 @@ class RolesController extends Controller
 
     public function datatable()
     {
-        $roles = Role::all();
+        $roles = Role::query();
 
         return Datatables::of($roles)
-            ->editColumn('name', function (Role $role) {
-                return $role->name;
-            })
             ->addColumn('action', function (Role $role) {
                 return view('base.settings.roles.actions', ['role' => $role]);
             })

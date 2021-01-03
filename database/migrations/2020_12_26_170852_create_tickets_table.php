@@ -21,10 +21,10 @@ class CreateTicketsTable extends Migration
             $table->unsignedInteger('priority_id');
             $table->unsignedInteger('department_id');
             $table->morphs('creator');
-            $table->unsignedInteger('project_id');
+            $table->unsignedInteger('project_id')->nullable();
             $table->timestamp('last_reply_at')->nullable();
             $table->unsignedInteger('status_id');
-            $table->unsignedInteger('assigned_user_id');
+            $table->unsignedInteger('assigned_user_id')->nullable();
             $table->unsignedInteger('organisation_id');
             $table->softDeletes();
             $table->timestamps();

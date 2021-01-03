@@ -12,6 +12,7 @@
                 <ul class="nav navbar-nav">
                     <li class="{{active('portal.dashboard')}}"><a href="{{route('portal.dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard <span class="sr-only">(current)</span></a></li>
                     <li class="{{active('portal.knowledge-base.*')}}"><a href="{{route('portal.knowledge-base.index')}}"><i class="fa fa-book"></i> Knowledge Base <span class="sr-only">(current)</span></a></li>
+                    <li class="{{active('portal.tickets.*')}}"><a href="{{route('portal.tickets.index')}}"><i class="fa fa-ticket"></i> Tickets <span class="sr-only">(current)</span></a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
