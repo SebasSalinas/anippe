@@ -23,5 +23,14 @@ class TicketDepartmentSeeder extends Seeder
             'organisation_id' => 1,
             'created_at' => now()
         ]);
+
+        TicketDepartment::create([
+            'uuid' => Str::uuid()->toString(),
+            'code' => 'SUP',
+            'name' => 'Support',
+            'description' => 'Have a question about out projects?',
+            'organisation_id' => 1,
+            'created_at' => now()
+        ]);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\Priority;
 use App\Enums\TicketStatus;
+use App\Observers\TicketObserver;
 use Illuminate\Support\Facades\URL;
 
 class Ticket extends BaseOrganisationModel
@@ -11,12 +13,24 @@ class Ticket extends BaseOrganisationModel
         'status_id' => TicketStatus::Open
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        parent::observe(new TicketObserver());
+    }
+
     /*
      * Methods
      */
     public function link()
     {
         return URL::route('base.tickets.show', ['ticket' => $this], ['class' => 'text-bold text-primary']);
+    }
+
+    public function portalLink()
+    {
+        return URL::route('portal.tickets.show', ['ticket' => $this], ['class' => 'text-bold text-primary']);
     }
 
     /*
@@ -50,6 +64,19 @@ class Ticket extends BaseOrganisationModel
     public function assigned()
     {
         return $this->belongsTo(User::class, 'assigned_user_id');
+    }
+
+    /*
+     * Accessors
+     */
+    public function getPriorityAttribute()
+    {
+        return Priority::getDescription($this->priority_id);
+    }
+
+    public function getStatusAttribute()
+    {
+        return TicketStatus::getDescription($this->status_id);
     }
 
 

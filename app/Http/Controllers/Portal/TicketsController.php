@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Ticket;
 use App\Models\TicketDepartment;
 use App\Services\TicketService;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -32,11 +33,11 @@ class TicketsController extends Controller
         //Ticket for logged contact
         $tickets = Ticket::whereHasMorph('creator', [Contact::class], function ($query) {
             $query->where('id', auth()->user()->id);
-        })->with('department');
+        })->with(['department', 'project']);
 
         return Datatables::of($tickets)
             ->editColumn('title', function (Ticket $ticket) {
-                return '<a href="' . $ticket->link() . '" class="text-bold text-info">' . $ticket->title . '</a>';
+                return '<a href="' . $ticket->portalLink() . '" class="text-bold text-info">' . $ticket->title . '</a>';
             })
             ->addColumn('department', function (Ticket $ticket) {
                 return $ticket->department->name;
@@ -81,21 +82,10 @@ class TicketsController extends Controller
 
     public function show(Ticket $ticket)
     {
+        $ticket->load(['replies', 'media']);
+
         return view('portal.tickets.show', compact('ticket'));
     }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
 
     public function destroy(Ticket $ticket)
     {
@@ -104,5 +94,14 @@ class TicketsController extends Controller
         $this->flashSaveSuccess();
 
         return redirect()->route('portal.tickets.index');
+    }
+
+    public function reply(Request $request, Ticket $ticket)
+    {
+        $this->ticketService->addPortalReply($request, $ticket);
+
+        $this->flashSaveSuccess();
+
+        return redirect()->route('portal.tickets.show', $ticket);
     }
 }

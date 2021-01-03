@@ -198,6 +198,7 @@
     </aside>
     <div class="control-sidebar-bg"></div>
 </div>
+
 @include('common.flash')
 
 <script src="{{asset('base/js/app.js')}}"></script>

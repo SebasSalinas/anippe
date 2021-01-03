@@ -29,7 +29,8 @@ Route::group(['middleware' => 'auth:portal'], function () {
     Route::post('/profile/edit', 'ProfileController@update')->name('profile.edit');
 
     //Tickets
-    Route::get('datatable', 'TicketsController@datatable')->name('tickets.datatable');
-    Route::resource('tickets', 'TicketsController');
+    Route::get('tickets/datatable', 'TicketsController@datatable')->name('tickets.datatable');
+    Route::post('tickets/{ticket}/reply', 'TicketsController@reply')->name('tickets.reply');
+    Route::resource('tickets', 'TicketsController')->except(['edit', 'update']);
 
 });

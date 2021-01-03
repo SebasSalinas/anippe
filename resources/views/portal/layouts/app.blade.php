@@ -36,6 +36,8 @@
     </footer>
 </div>
 
+@include('common.flash')
+
 <script src="{{asset('portal/js/app.js')}}"></script>
 @stack('scripts')
 </body>

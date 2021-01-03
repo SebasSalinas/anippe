@@ -10,17 +10,28 @@
 namespace App\Observers;
 
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class BaseObserver
+ class BaseObserver
 {
     public function creating($model)
     {
         //Check if table has column organisation_id, and set it.
         if (Schema::hasColumn($model->getTable(), 'organisation_id')) {
-            if (session()->has('organisation_id')) {
-                $model->organisation_id = session('organisation_id');
+            if (auth()->check()) {
+                $model->organisation_id = auth()->user()->organisation_id;
+            }
+        }
+
+        //Check if table has column organisation_id, and set it.
+        if (Schema::hasColumn($model->getTable(), 'creator')) {
+            if (auth()->check()) {
+                $model->creator_id = auth()->user()->id;
+                //$model->creator_type = auth()->user()->id;
+
+
             }
         }
 

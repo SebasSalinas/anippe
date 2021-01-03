@@ -11,6 +11,9 @@ namespace App\Services;
 
 
 use App\Events\Ticket\TicketCreated;
+use App\Events\Ticket\TicketReply;
+use App\Models\Contact;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TicketService
@@ -22,6 +25,19 @@ class TicketService
         event(new TicketCreated($ticket));
 
         return $ticket;
+    }
+
+    public function addPortalReply(Request $request, Ticket $ticket)
+    {
+        $isContact = auth()->user() instanceof Contact;
+
+        $ticket->replies()->create([
+            'content' => $request->reply,
+            'creator_id' => auth()->user()->id,
+            'creator_type' => $isContact ? 'contact' : 'user', //TODO:: This is not good!!
+        ]);
+
+        event(new TicketReply($ticket));
     }
 
 }
