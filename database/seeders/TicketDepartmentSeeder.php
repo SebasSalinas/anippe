@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\TicketDepartment;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TicketDepartmentSeeder extends Seeder
 {
@@ -13,6 +15,13 @@ class TicketDepartmentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        TicketDepartment::create([
+            'uuid' => Str::uuid()->toString(),
+            'code' => 'FIN',
+            'name' => 'Finances',
+            'description' => 'Have a question about invoices?',
+            'organisation_id' => 1,
+            'created_at' => now()
+        ]);
     }
 }
