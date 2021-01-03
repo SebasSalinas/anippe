@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class TicketReply extends BaseOrganisationModel
 {
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->ticket()->update([
+                'last_reply_at' => now()
+            ]);
+        });
+    }
+
     /*
      * Relations
      */
