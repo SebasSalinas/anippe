@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Contact;
 use App\Models\Project;
 use App\Models\Ticket;
+use App\Models\TicketReply;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -34,7 +35,8 @@ class AppServiceProvider extends ServiceProvider
             'user' => User::class,
             'client' => Contact::class,
             'project' => Project::class,
-            'ticket' => Ticket::class
+            'ticket' => Ticket::class,
+            'ticket-reply' => TicketReply::class
         ]);
 
 

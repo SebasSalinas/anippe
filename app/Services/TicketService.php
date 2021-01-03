@@ -31,11 +31,18 @@ class TicketService
     {
         $isContact = auth()->user() instanceof Contact;
 
-        $ticket->replies()->create([
+        $reply = $ticket->replies()->create([
             'content' => $request->reply,
             'creator_id' => auth()->user()->id,
             'creator_type' => $isContact ? 'contact' : 'user', //TODO:: This is not good!!
         ]);
+
+
+        if ($request->hasFile('attachment')) {
+            foreach (request('attachment') as $file) {
+                $reply->addMedia($file)->toMediaCollection();
+            }
+        }
 
         event(new TicketReply($ticket));
     }

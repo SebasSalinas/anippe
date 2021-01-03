@@ -83,7 +83,8 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Content *</label>
-                            <textarea class="form-control" name="content" placeholder="Write your message" rows="5" required></textarea> @error('content')
+                            <textarea class="form-control" name="content" placeholder="Write your message" rows="5" required></textarea>
+                            @error('content')
                             <p class="help-block text-red text-bold">{{$message}}</p>
                             @enderror
                         </div>

@@ -36,6 +36,4 @@ $(function () {
             loaderBg: '#00a65a',  // Background color of the toast loader
         });
     });
-
-
 });

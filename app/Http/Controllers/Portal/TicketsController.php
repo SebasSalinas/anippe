@@ -98,6 +98,11 @@ class TicketsController extends Controller
 
     public function reply(Request $request, Ticket $ticket)
     {
+        $this->validate($request, [
+            'reply' => 'required',
+            'attachment' => 'sometimes|max:2048'
+        ]);
+
         $this->ticketService->addPortalReply($request, $ticket);
 
         $this->flashSaveSuccess();

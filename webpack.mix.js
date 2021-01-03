@@ -60,6 +60,7 @@ mix.scripts([
     'resources/adminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js',
     'resources/adminLTE/bower_components/fastclick/lib/fastclick.js',
     'resources/adminLTE/plugins/jquerytoast/jquery.toast.min.js',
+    'resources/adminLTE/plugins/filepond/dist/filepond.js',
     'resources/adminLTE/dist/js/adminlte.min.js',
     'resources/js/app.js'
 ], 'public/portal/js/app.js')
@@ -69,6 +70,7 @@ mix.scripts([
         'resources/adminLTE/bower_components/Ionicons/css/ionicons.min.css',
         'resources/adminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css',
         'resources/adminLTE/plugins/jquerytoast/jquery.toast.min.css',
+        'resources/adminLTE/plugins/filepond/dist/filepond.css',
         'resources/adminLTE/dist/css/AdminLTE.min.css',
         'resources/adminLTE/dist/css/skins/_all-skins.min.css',
         'resources/adminLTE/plugins/iCheck/square/blue.css'

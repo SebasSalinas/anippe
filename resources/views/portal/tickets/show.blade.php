@@ -73,14 +73,25 @@
                         <div class="box-body border-bottom-1">
                             <blockquote>
                                 <p>{{$ticket->content}}</p>
-                                <small>Created by <cite title="Source Title">{{$ticket->creator->fullName}}</cite></small>
+                                <small>Created by <cite title="Source Title">{{$ticket->creator->fullName}}</cite>
+                                </small>
                             </blockquote>
                         </div>
-                        <form action="{{route('portal.tickets.reply', $ticket)}}" method="POST">
+                        <form action="{{route('portal.tickets.reply', $ticket)}}" method="POST" enctype="multipart/form-data">
                             <div class="box-body">
                                 @csrf
                                 <div class="form-group">
                                     <textarea name="reply" rows="5" class="form-control" placeholder="Add your reply"></textarea>
+                                    @error('reply')
+                                    <p class="help-block text-red text-bold">{{$message}}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="file" name="attachment[]" multiple>
+                                    @error('attachment')
+                                    <p class="help-block text-red text-bold">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="box-footer text-right">
