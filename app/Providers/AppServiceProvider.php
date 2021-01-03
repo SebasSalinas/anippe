@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'client' => Client::class,
             'user' => User::class,
-            'client' => Contact::class,
+            'contact' => Contact::class,
             'project' => Project::class,
             'ticket' => Ticket::class,
             'ticket-reply' => TicketReply::class

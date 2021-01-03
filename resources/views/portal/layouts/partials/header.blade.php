@@ -14,11 +14,6 @@
                     <li class="{{active('portal.knowledge-base.*')}}"><a href="{{route('portal.knowledge-base.index')}}"><i class="fa fa-book"></i> Knowledge Base <span class="sr-only">(current)</span></a></li>
                     <li class="{{active('portal.tickets.*')}}"><a href="{{route('portal.tickets.index')}}"><i class="fa fa-ticket"></i> Tickets <span class="sr-only">(current)</span></a></li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-                    </div>
-                </form>
             </div>
 
             <div class="navbar-custom-menu">

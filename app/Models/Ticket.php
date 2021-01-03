@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\Priority;
 use App\Enums\TicketStatus;
 use App\Observers\TicketObserver;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class Ticket extends BaseOrganisationModel
@@ -77,6 +78,13 @@ class Ticket extends BaseOrganisationModel
     public function getStatusAttribute()
     {
         return TicketStatus::getDescription($this->status_id);
+    }
+
+    public function getLastReplyAtAttribute($timestamp)
+    {
+        if ($timestamp == null) return;
+
+        return Carbon::parse($timestamp)->format('d.m.Y H:m');
     }
 
 

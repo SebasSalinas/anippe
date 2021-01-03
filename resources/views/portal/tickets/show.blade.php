@@ -81,15 +81,13 @@
                             <div class="box-body">
                                 @csrf
                                 <div class="form-group">
-                                    <textarea name="reply" rows="5" class="form-control" placeholder="Add your reply"></textarea>
-                                    @error('reply')
+                                    <textarea name="reply" rows="5" class="form-control" placeholder="Add your reply"></textarea> @error('reply')
                                     <p class="help-block text-red text-bold">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="file" name="attachment[]" multiple>
-                                    @error('attachment')
+                                    <input type="file" name="attachment[]" multiple> @error('attachment')
                                     <p class="help-block text-red text-bold">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -100,6 +98,30 @@
                             </div>
                         </form>
                     </div>
+
+                    @if(count($ticket->replies) > 0)
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Replies</h3>
+                            </div>
+                            <div class="box-body no-padding">
+                                @foreach($ticket->replies as $reply)
+                                    <div class="post" style="padding:10px;">
+                                        <div class="user-block">
+                                            <img class="img-circle img-bordered-sm" src="https://adminlte.io/themes/AdminLTE/dist/img/user7-128x128.jpg" alt="user image">
+                                            <span class="username">
+                                            <a href="#">{{$reply->creator->fullName}}</a>
+                                        </span> <span class="description">{{$reply->created_at}}</span>
+                                        </div>
+                                        <p>
+                                        {{$reply->content}}
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <p class="text-muted text-center">No replies for this ticket</p>
+                    @endif
                 </div>
             </div>
         </section>

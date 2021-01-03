@@ -36,13 +36,13 @@ class BaseOrganisationModel extends Model implements HasMedia
     {
         if ($timestamp == null) return;
 
-        return Carbon::parse($timestamp)->format('d.m.Y H:m');
+        return Carbon::parse($timestamp)->format('d.m.Y H:i');
     }
 
     public function getUpdatedAtAttribute($timestamp)
     {
         if ($timestamp == null) return;
 
-        return Carbon::parse($timestamp)->format('d.m.Y H:m');
+        return Carbon::parse($timestamp)->format('d.m.Y H:i');
     }
 }

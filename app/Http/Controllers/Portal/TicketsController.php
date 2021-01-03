@@ -82,7 +82,7 @@ class TicketsController extends Controller
 
     public function show(Ticket $ticket)
     {
-        $ticket->load(['replies', 'media']);
+        $ticket->load(['replies.creator', 'media']);
 
         return view('portal.tickets.show', compact('ticket'));
     }
