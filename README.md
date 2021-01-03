@@ -8,4 +8,4 @@ Thank you for considering contributing to Anippe!
 
 ## License
 
-Anippe is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Anippe is open-sourced software licensed under the GNU GPL v3 license
