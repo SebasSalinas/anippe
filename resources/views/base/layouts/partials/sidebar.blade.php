@@ -72,7 +72,13 @@
                         <a href="{{route('base.settings.general')}}"><i class="fa fa-gear"></i> Settings</a>
                     </li>
 
+
+
                 </ul>
+            </li>
+
+            <li class="{{active(['base.log.*'])}}">
+                <a href="{{route('base.log.index')}}"> <i class="fa fa-info"></i> <span>Log</span> </a>
             </li>
 
             {{--Pinned projects--}}

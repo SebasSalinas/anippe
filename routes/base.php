@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('tickets/datatable', 'TicketsController@datatable')->name('tickets.datatable');
     Route::resource('tickets', 'TicketsController');
 
+    //Log
+    Route::get('log/datatable', 'LogController@datatable')->name('log.datatable');
+    Route::resource('log', 'LogController');
+
     //Client
     Route::group(['prefix' => 'client/{client}', 'as' => 'client.', 'namespace' => 'Client'], function () {
 
